@@ -1,11 +1,10 @@
 %{
-	#define CLEAN printf("");
-	#define TAB printf("\t");
-	#define CHAR printf("%c", yytext);
+	#define CLEAN fprintf(yyout, "");
+	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
-char 	[^\{\}]
+char 	[^\n\{\}]
 eos 	\n
 left 	\{
 right 	\}
@@ -14,7 +13,7 @@ right 	\}
 			CLEAN;
 		}
 {char}  {
-			CHAR;
+			ECHO;
 		}
 {eos}	{
 			ECHO;
