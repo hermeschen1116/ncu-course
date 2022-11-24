@@ -9,7 +9,7 @@ left 	\{
 right 	\}
 %%
 {tab}	{
-			\* do nothing *\
+			/* do nothing */
 		}
 {char}  {
 			ECHO;
