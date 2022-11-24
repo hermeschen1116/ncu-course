@@ -1,12 +1,14 @@
 %{
-	#define TAB fprintf(yyout, '\t');
+	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
+tab 	^\t*
 char 	[^\t]+
 eos 	\n
 left 	\{
 right 	\}
 %%
+{tab}
 {char}  ECHO;
 {eos}	{
 			ECHO;
