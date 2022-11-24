@@ -1,0 +1,7 @@
+jupyter
+numpy
+pytorch-lightning
+rank-bm25
+torch
+tqdm
+transformers

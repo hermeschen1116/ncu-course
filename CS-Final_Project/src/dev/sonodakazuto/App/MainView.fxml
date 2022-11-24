@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="645.0" prefWidth="1110.0" style="-fx-background-color: #575757;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.sonodakazuto.App.MainController">
+    <left>
+        <VBox accessibleText="Menu_bar" alignment="TOP_CENTER" prefHeight="585.0" prefWidth="185.0" spacing="20.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="230.0" spacing="5.0">
+                <Label fx:id="labelPomoClock" alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="197.0" text="00：00" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="@../res/font/NotoSansCJKtc-Bold.otf" size="30.0" />
+                    </font>
+                </Label>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="223.0" prefWidth="162.0" spacing="10.0">
+                <Button fx:id="btStartPomo" accessibleText="Finish Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtPomoStart" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36; -fx-background-radius: 5px;" textAlignment="CENTER">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="5.0">
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/button_pomo_start.png" />
+                            </ImageView>
+                            <Label text="Start" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="btFinishTask" accessibleText="Finish Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtPomoFinish" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36; -fx-background-radius: 5px;" textAlignment="CENTER">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="5.0">
+
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/button_finish_task.png" />
+                            </ImageView>
+                            <Label text="Finish" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="btSkipPomo" accessibleText="Finish Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtPomoSkip" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36; -fx-background-radius: 5px;" textAlignment="CENTER">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="5.0">
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/button_pomo_skip.png" />
+                            </ImageView>
+                            <Label text="Skip" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+    <top>
+        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="1050.0" spacing="10.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets right="10.0" />
+            </padding>
+            <TextField fx:id="textFieldAddTask" onMouseClicked="#onClickTextFieldAddTask" prefHeight="39.0" prefWidth="310.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5px;" visible="false" />
+            <Button fx:id="btAddTask" accessibleText="Setting" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtAddTask" onMouseEntered="#onEnterbtAddTask" opacity="0.75" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: #4B4B4B#4B4B4B; -fx-background-radius: 5px;" textAlignment="CENTER">
+                <graphic>
+                    <HBox alignment="CENTER" spacing="5.0">
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <Image url="@../res/image/button_add_task.png" />
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="85.0" text="Add Task" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="@../res/font/NotoSansCJKtc-DemiLight.otf" size="17.0" />
+                            </font>
+                        </Label>
+                    </HBox>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+    <right>
+        <VBox fx:id="vboxEditorBar" alignment="CENTER" prefHeight="585.0" prefWidth="317.0" spacing="10.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
+            <TextField fx:id="textFieldInputData" onMouseClicked="#onClickTextFieldInputData" prefHeight="48.0" prefWidth="257.0" visible="false">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </TextField>
+            <VBox fx:id="vboxDataInput" alignment="CENTER" prefHeight="223.0" prefWidth="162.0" spacing="10.0" visible="false">
+                <Button fx:id="btSetPomo" accessibleText="Start Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtSetPomo" onMouseEntered="#onEnterbtSetPomo" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36#2D2D36#2D2D36; -fx-background-radius: 5px;">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="10.0">
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/icon_schedule.png" />
+                            </ImageView>
+                            <Label text="Set Pomo" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="btDeleteTask" accessibleText="Add Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseEntered="#onEnterbtDeleteTask" onMouseClicked="#onPressedbtDeleteTask" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36#2D2D36#2D2D36; -fx-background-radius: 5px;">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="5.0">
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/button_delete_task.png" />
+                            </ImageView>
+                            <Label text="Delete" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button fx:id="btModifyTask" accessibleText="Modify Task" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onPressedbtModifyTask" onMouseEntered="#onEnterbtModifyTask" opacity="0.75" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2D2D36#2D2D36#2D2D36#2D2D36; -fx-background-radius: 5px;">
+                    <graphic>
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="97.0" spacing="5.0">
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../res/image/button_modify_task.png" />
+                            </ImageView>
+                            <Label text="Modify" textFill="WHITE">
+                                <font>
+                                    <Font name="@../res/font/NotoSansCJKtc-Regular.otf" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+                    </graphic>
+                </Button>
+            </VBox>
+            <padding>
+                <Insets left="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </right>
+    <center>
+        <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="585.0" prefWidth="615.0" scaleShape="false" BorderPane.alignment="TOP_CENTER">
+            <padding>
+                <Insets right="2.0" top="2.0" />
+            </padding>
+            <VBox fx:id="vboxTaskList" alignment="TOP_CENTER" prefHeight="585.0" prefWidth="598.0" spacing="5.0" onMouseEntered="#onEntervboxTaskList">
+                <padding>
+                    <Insets left="2.0" right="5.0" top="5.0" />
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
