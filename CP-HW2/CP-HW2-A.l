@@ -1,10 +1,10 @@
 %{
-	#define CLEAN fprintf(yyout, "%n");
+	#define CLEAN fprintf(yyout, "");
 	#define TAB fprintf(yyout, "%c", '\t');
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
-char 	[.^\{\}]
+char 	.^\{\}
 eos 	\n
 left 	\{
 right 	\}
