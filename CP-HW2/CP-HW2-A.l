@@ -16,11 +16,11 @@ right 	\}
 			for (int i = 0; i < indent_count; i++) fprintf(yyout, "%c", '\t');
 		}
 {left} 	{
-			indent_count++;
+			indent_count += 1;
 			ECHO;
 		}
 {right} {
-			indent_count--;
+			indent_count -= 1;
 			ECHO;
 		}
 %%
