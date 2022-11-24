@@ -1,15 +1,28 @@
 %{
-int indent_count = 0;
+	#define CLEAN fprintf(yyout, '');
+	#define TAB fprintf(yyout, '\t');
+	unsigned int indent_count = 0;
 %}
-left \{
-right \}
-eof \n
+tab		^\t*
+char 	.
+eos 	\n
+left 	\{
+right 	\}
 %%
-{left} {indent_count++;}
-{right} {indent_count--;}
+{tab}	CLEAN;
+{char}  ECHO;
+{eos}	{
+			ECHO;
+			for (int i = 0; i < indent_count; i++) TAB;
+		}
+{left} 	{
+			indent_count++;
+		}
+{right} {
+			indent_count--;
+		}
 %%
 int main(int argc, char *argv[]) {
 	yylex();
-	printf("%d\n", indent_count);
 	return 0;
 }

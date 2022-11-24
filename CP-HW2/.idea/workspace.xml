@@ -18,14 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CP-HW2-A.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CP-HW2-B.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8baf07de3beab5a22c4b8a0646d2bf966ed31367" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CP-HW2-A.l" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-A.l" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669295760664</updated>
       <workItem from="1669295761879" duration="601000" />
-      <workItem from="1669296388455" duration="2593000" />
+      <workItem from="1669296388455" duration="4944000" />
     </task>
     <servers />
   </component>
