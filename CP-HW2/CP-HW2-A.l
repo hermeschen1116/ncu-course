@@ -13,7 +13,7 @@ right 	\}
 {char}  ECHO;
 {eos}	{
 			ECHO;
-			for (int i = 0; i < indent_count; i++) fprintf(yyout, "\t");
+			for (int i = 0; i < indent_count; i++) fprintf(yyout, "%c", '\t');
 		}
 {left} 	{
 			indent_count++;
