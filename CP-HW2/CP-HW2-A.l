@@ -2,7 +2,7 @@
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
-char 	[^\t]+
+char 	[^\t\{\}]+
 eos 	\n
 left 	\{
 right 	\}
