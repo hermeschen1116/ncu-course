@@ -8,7 +8,9 @@ eos 	\n
 left 	\{
 right 	\}
 %%
-{tab}	{}
+{tab}	{
+			fprintf(yyout, "");
+		}
 {char}  ECHO;
 {eos}	{
 			ECHO;
