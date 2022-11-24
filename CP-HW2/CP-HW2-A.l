@@ -12,6 +12,7 @@ right 	\}
 		}
 {char}  ECHO;
 {eos}	{
+			printf("%d", indent_count);
 			ECHO;
 			for (int i = 0; i < indent_count; i++) fprintf(yyout, "\t");
 		}
