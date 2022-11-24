@@ -8,8 +8,12 @@ eos 	\n
 left 	\{
 right 	\}
 %%
-{tab}	CLEAN;
-{char}  ECHO;
+{tab}	{
+			CLEAN;
+		}
+{char}  {
+			ECHO;
+		}
 {eos}	{
 			ECHO;
 			for (int i = 0; i < indent_count; i++) fprintf(yyout, "%c", '\t');
