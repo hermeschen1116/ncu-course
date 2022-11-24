@@ -1,5 +1,4 @@
 %{
-	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
@@ -14,7 +13,7 @@ right 	\}
 {char}  ECHO;
 {eos}	{
 			ECHO;
-			for (int i = 0; i < indent_count; i++) TAB;
+			for (int i = 0; i < indent_count; i++) fprintf(yyout, "\t");
 		}
 {left} 	{
 			indent_count++;
