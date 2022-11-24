@@ -4,7 +4,7 @@
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
-char 	.[^\t\{\}]
+char 	.[^\{\}]
 eos 	\n
 left 	\{
 right 	\}
