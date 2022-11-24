@@ -1,7 +1,7 @@
 %{
 	#define CLEAN printf("");
-	#define TAB print("\t");
-	#define CHAR print("%c", yytext);
+	#define TAB printf("\t");
+	#define CHAR printf("%c", yytext);
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
