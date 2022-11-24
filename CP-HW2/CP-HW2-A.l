@@ -1,5 +1,5 @@
 %{
-	#define CLEAN fprintf(yyout, '');
+	#define CLEAN fprintf(yyout, "%c", '');
 	#define TAB fprintf(yyout, "%c", '\t');
 	unsigned int indent_count = 0;
 %}
@@ -25,8 +25,6 @@ right 	\}
 		}
 {right} {
 			indent_count -= 1;
-			CLEAN;
-			for (int i = 0; i < indent_count; i++) TAB;
 			ECHO;
 		}
 %%
