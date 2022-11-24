@@ -1,5 +1,5 @@
 %{
-	#define CLEAN fprintf(yyout, "%c", '');
+	#define CLEAN fprintf(yyout, "");
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
