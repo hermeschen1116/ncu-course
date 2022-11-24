@@ -8,7 +8,7 @@ eos 	\n
 left 	\{
 right 	\}
 %%
-{tab}	CLEAN
+{tab}	CLEAN;
 {char}  ECHO;
 {eos}	{
 			ECHO;
