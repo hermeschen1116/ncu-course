@@ -25,6 +25,8 @@ right 	\}
 		}
 {right} {
 			indent_count -= 1;
+			CLEAN;
+			for (int i = 0; i < indent_count; i++) TAB;
 			ECHO;
 		}
 %%
