@@ -1,15 +1,14 @@
 %{
+	#define CLEAN fprintf(yyout, "%c", '');
 	unsigned int indent_count = 0;
 %}
 tab 	^\t*
-char 	[^\t\{\}]+
+char 	.
 eos 	\n
 left 	\{
 right 	\}
 %%
-{tab}	{
-			fprintf(yyout, "");
-		}
+{tab}	CLEAN
 {char}  ECHO;
 {eos}	{
 			ECHO;
