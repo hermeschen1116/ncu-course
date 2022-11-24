@@ -30,5 +30,6 @@ right 	\}
 %%
 int main(int argc, char *argv[]) {
 	yylex();
+	printf("%d", indent_count);
 	return 0;
 }
