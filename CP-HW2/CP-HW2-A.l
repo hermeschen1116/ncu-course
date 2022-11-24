@@ -8,12 +8,12 @@ left 	\{
 right 	\}
 %%
 {tab}	{
-			fprintf(yyout, "%c", '');
+			fprintf(yyout, "%s", "");
 		}
 {char}  ECHO;
 {eos}	{
 			ECHO;
-			for (int i = 0; i < indent_count; i++) fprintf(yyout, "%c", '\t');
+			for (int i = 0; i < indent_count; i++) fprintf(yyout, "%s", "\t");
 		}
 {left} 	{
 			indent_count++;
