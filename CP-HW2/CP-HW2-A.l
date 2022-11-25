@@ -2,7 +2,7 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos			^[^\t\n\}]*
+sos			^[^\t\n\{\}]*
 sos_tab		^\t+
 eos			\n$
 char		[^\t\n\{\}]*
