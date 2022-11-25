@@ -3,4 +3,4 @@ project(CP_HW2)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(CP-HW2-B CP-HW2-B.cpp)
+add_executable(CP-HW2-B.cpp)
