@@ -11,7 +11,7 @@ left			\{
 right			\}
 %%
 {tab}			{
-					for (int i = 0; i < indent_count; i++) TAB;
+					// do nothing
 				}
 {eos_right}		{
 					fprintf(yyout, "\n");
