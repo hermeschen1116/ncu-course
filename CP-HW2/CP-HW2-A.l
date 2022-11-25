@@ -1,36 +1,34 @@
+/* C Definitions */
 %{
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-char 		[^\n\{\}]
-left 		\{
-right_e 	\}
-right_s		^\t+\}
-sos 		^\t*
+/* LEX Definitions */
+sos			^\t+
 eos			\n$
+l_bracket	\{
+r_bracket	\}
+sentence	[^\t\n\{\}]+
+}
 %%
-{char}  	{
-				ECHO;
-			}
-{left} 		{
-				indent_count++;
-				ECHO;
-			}
-{right_e} 	{
-				indent_count--;
-				ECHO;
-			}
-{right_s}	{
-				for (int i = 0; i < --indent_count; i++) TAB;
-				fprintf(yyout, "}");
-			}
+/* Rules */
 {sos}		{
 				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
-				fprintf(yyout, "%d\n", indent_count);
+				ECHO;
+			}
+{l_bracket}	{
+				indent_count += 1;
+			}
+{r_bracket}	{
+				indent_count -= 1;
+			}
+{sentence}	{
+				ECHO;
 			}
 %%
+/* Subroutine */
 int main(int argc, char *argv[]) {
 	yylex();
 	return 0;
