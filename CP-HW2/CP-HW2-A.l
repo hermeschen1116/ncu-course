@@ -8,9 +8,6 @@ left 		\{
 right_e 	\}$
 right_s		^\t+\}
 %%
-{sos}		{
-				for (int i = 0; i < indent_count; i++) TAB;
-			}
 {char}  	{
 				ECHO;
 			}
@@ -25,6 +22,9 @@ right_s		^\t+\}
 {right_s}	{
 				for (int i = 0; i < --indent_count; i++) TAB;
 				fprintf(yyout, "\}");
+			}
+{sos}		{
+				for (int i = 0; i < indent_count; i++) TAB;
 			}
 %%
 int main(int argc, char *argv[]) {
