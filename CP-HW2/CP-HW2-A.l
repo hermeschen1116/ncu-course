@@ -2,26 +2,36 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-heading_tab		^(\t*)
-char			[^\t\{\}]
-l_bracket		\{
-r_bracket		\}
+sos				^\t*
+left_start		\{[^\t\n\{]*
+left_end		[^\t\n\{]*\{
+right_start		\}[^\t\n\{]*
+right_end		[^\t\n\{]*\}
+eos				\n
 %%
-{heading_tab}	{
+{sos}			{
 					// do nothing
-					fprintf(yyout, "%d", indent_count);
 				}
-{char}			{
-					ECHO;
-				}
-{l_bracket}		{
-					++indent_count;
-					ECHO;
-				}
-{r_bracket}		{
-					--indent_count;
-					ECHO;
-				}
+{left_start}	{
+                	++indent_count;
+                	ECHO;
+                }
+{left_end}		{
+                	++indent_count;
+                    ECHO;
+                }
+{right_start}	{
+                	--indent_count;
+                    ECHO;
+                }
+{right_end}		{
+                	--indent_count;
+                    ECHO;
+                }
+{eos}			{
+                	ECHO;
+                	for (int i = 0; i < indent_count; i++) TAB;
+                }
 %%
 int main(int argc, char *argv[]) {
 	yylex();
