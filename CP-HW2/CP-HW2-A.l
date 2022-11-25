@@ -6,7 +6,6 @@ sos			^\t*
 char		[^\t\{\}]
 l_bracket	\{
 r_bracket	\}
-}
 %%
 {}
 {sos}			{
