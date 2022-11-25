@@ -17,9 +17,11 @@ r_bracket	\}
 				}
 {l_bracket}		{
 					++indent_count;
+					ECHO;
 				}
 {r_bracket}		{
 					--indent_count;
+					ECHO;
 				}
 %%
 int main(int argc, char *argv[]) {
