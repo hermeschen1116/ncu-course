@@ -16,9 +16,11 @@ sentence	[^\t\n\{\}]+
 			}
 {l_bracket}	{
 				indent_count += 1;
+				ECHO;
 			}
 {r_bracket}	{
 				indent_count -= 1;
+				ECHO;
 			}
 {sentence}	{
 				ECHO;
