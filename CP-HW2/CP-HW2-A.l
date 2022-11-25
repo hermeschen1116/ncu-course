@@ -6,7 +6,7 @@ sos			^\t*
 eos			\n$
 l_bracket	\{
 r_bracket	\}
-char		[^\t\n\{\}]
+char		[^\n\{\}]
 %%
 {sos}		{
 				fprintf(yyout, "%d", indent_count);
