@@ -2,22 +2,26 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos				^[^\t\n\{\}]$
-sos_tab			^\t+
-eos				\n$
+sos				^[^\t\n\{\}]
+tab				^\t+
+eos_right		\n\}
+eos				\n
 char			[^\t\n\{\}]*
 left			\{
 right			\}
 %%
-{sos}			{
+{tab}			{
 					for (int i = 0; i < indent_count; i++) TAB;
-					ECHO;
 				}
-{sos_tab}		{
+{eos_right}		{
+					fprintf(yyout, "\n");
+					--indent_count;
 					for (int i = 0; i < indent_count; i++) TAB;
+					fprintf(yyout, "}");
 				}
 {eos}			{
 					ECHO;
+					for (int i = 0; i < indent_count; i++) TAB;
 				}
 {char}			{
 					ECHO;
