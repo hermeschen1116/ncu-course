@@ -3,17 +3,17 @@
 	unsigned int indent_count = 0;
 %}
 sos			^\t*
-eos			\n$
+eos			\n
 l_bracket	\{
 r_bracket	\}
 char		[^\n\{\}]
 %%
 {sos}		{
-				fprintf(yyout, "%d", indent_count);
 				// for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
 				ECHO;
+				fprintf(yyout, "%d", indent_count);
 			}
 {l_bracket}	{
 				++indent_count;
