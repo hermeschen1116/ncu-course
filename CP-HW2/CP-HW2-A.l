@@ -5,8 +5,8 @@
 sos				^\t*
 left_start		\{[^\t\n\{]*
 left_end		[^\t\n\{]*\{
-right_start		\}[^\t\n\{]*
-right_end		[^\t\n\{]*\}
+right_start		\}[^\t\n\}]*
+right_end		[^\t\n\}]*\}
 eos				\n
 %%
 {sos}			{
