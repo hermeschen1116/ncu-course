@@ -5,7 +5,7 @@
 sos 		^\t*
 char 		[^\n\{\}]
 left 		\{
-right_e 	\}\n$
+right_e 	\}.*\n$
 right_s		^\t+\}
 eos			\n$
 %%
