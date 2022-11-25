@@ -9,6 +9,7 @@ r_bracket	\}
 char		[^\t\n\{\}]
 %%
 {sos}		{
+				fprintf(yyout, "%d", indent_count);
 				// for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
