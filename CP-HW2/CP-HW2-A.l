@@ -11,6 +11,10 @@ right		\}
 %%
 {sos}		{
 				for (int i = 0; i < indent_count; i++) TAB;
+				ECHO;
+			}
+{sos_tab}	{
+				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
 				ECHO;
