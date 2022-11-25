@@ -2,8 +2,8 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos				^
 heading_tab		^\t+
+sos				^
 char			[^\t\{\}]
 l_bracket		\{
 r_bracket		\}
