@@ -2,18 +2,13 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos		^[]{1}
-tab		^\t+
+sos		^(\t*)
 eos		\n
 char	[^\t\n\{\}]*
 left	\{
 right	\}
 %%
 {sos}		{
-				for (int i = 0; i < indent_count; i++) TAB;
-			}
-{tab}		{
-				// do nothing
 				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
