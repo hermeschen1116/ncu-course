@@ -6,23 +6,23 @@ sos			^\t+
 eos			\n$
 l_bracket	\{
 r_bracket	\}
-sentence	[^\t\n\{\}]+
+char		[^\t\n\{\}]
 %%
 {sos}		{
-				// for (int i = 0; i < indent_count; i++) TAB;
+				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
 				ECHO;
 			}
 {l_bracket}	{
-				indent_count += 1;
+				++indent_count;
 				ECHO;
 			}
 {r_bracket}	{
-				indent_count -= 1;
+				--indent_count;
 				ECHO;
 			}
-{sentence}	{
+{char}		{
 				ECHO;
 			}
 %%
