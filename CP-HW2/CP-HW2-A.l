@@ -13,22 +13,18 @@ eos			\n$
 				ECHO;
 			}
 {left} 		{
-				fprintf(yyout, "left");
 				indent_count++;
 				ECHO;
 			}
 {right_e} 	{
-				fprintf(yyout, "right_e");
 				indent_count--;
 				ECHO;
 			}
 {right_s}	{
-				fprintf(yyout, "right_s");
 				for (int i = 0; i < --indent_count; i++) TAB;
 				fprintf(yyout, "}");
 			}
 {sos}		{
-				fprintf(yyout, "sos");
 				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
