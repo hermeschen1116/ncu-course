@@ -8,6 +8,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="CP_HW2" targetName="CP-HW2-B-test" />
       <config projectName="CP_HW2" targetName="CP-HW2-B" />
     </generated>
   </component>
@@ -18,13 +19,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CP-HW2-B/CP-HW2-B-1.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CP-HW2-B/CP-HW2-B-2.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CP-HW2-B/CP-HW2-B-3.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CP-HW2-B/CP-HW2-B-4.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CP-HW2-B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CP-HW2-B.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/Users/sonodakazuto/Repo/ncu-course/CP-HW2/CP-HW2-B",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sonodakazuto/Repo/ncu-course/CP-HW2/CP-HW2-B&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;zjhmale.rainbow.setting.RainbowConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/CP-HW2-B" />
@@ -73,9 +71,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -88,7 +86,9 @@
       <option name="presentableId" value="Default" />
       <updated>1669295760664</updated>
       <workItem from="1669295761879" duration="601000" />
-      <workItem from="1669296388455" duration="19210000" />
+      <workItem from="1669296388455" duration="29579000" />
+      <workItem from="1669399796115" duration="8219000" />
+      <workItem from="1669408619814" duration="3839000" />
     </task>
     <servers />
   </component>
