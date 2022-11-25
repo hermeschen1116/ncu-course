@@ -3,7 +3,7 @@
 	unsigned int indent_count = 0;
 %}
 sos		^\t*
-eos		\n
+eos		\n$
 char	[^\t\n\{\}]*
 left	\{
 right	\}
