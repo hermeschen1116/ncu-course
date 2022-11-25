@@ -21,7 +21,7 @@ right_s		^\t+\}
 			}
 {right_s}	{
 				for (int i = 0; i < --indent_count; i++) TAB;
-				fprintf(yyout, "\}");
+				fprintf(yyout, "}");
 			}
 {sos}		{
 				for (int i = 0; i < indent_count; i++) TAB;
