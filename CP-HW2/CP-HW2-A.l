@@ -9,7 +9,6 @@ eos			\n$
 l_bracket	\{
 r_bracket	\}
 sentence	[^\t\n\{\}]+
-}
 %%
 /* Rules */
 {sos}		{
