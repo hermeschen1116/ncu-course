@@ -33,7 +33,7 @@ eos			\n$
 				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
-				fprintf(yyout, "%d\n", indent_counts);
+				fprintf(yyout, "%d\n", indent_count);
 			}
 %%
 int main(int argc, char *argv[]) {
