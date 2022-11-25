@@ -17,7 +17,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="" />
+    <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/CP-HW2-A.l" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-A.l" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669295760664</updated>
       <workItem from="1669295761879" duration="601000" />
-      <workItem from="1669296388455" duration="14451000" />
+      <workItem from="1669296388455" duration="14816000" />
     </task>
     <servers />
   </component>
