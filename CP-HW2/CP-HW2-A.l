@@ -2,9 +2,8 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos				^[^\t\n\{\}]*
+sos				^[^\t\n\{\}]{1}
 sos_tab			^\t+
-sos_bracket		^(\{|\})
 eos				\n$
 char			[^\t\n\{\}]*
 left			\{
@@ -16,10 +15,6 @@ right			\}
 				}
 {sos_tab}		{
 					for (int i = 0; i < indent_count; i++) TAB;
-				}
-{sos_bracket}	{
-					for (int i = 0; i < indent_count; i++) TAB;
-					ECHO;
 				}
 {eos}			{
 					ECHO;
