@@ -9,11 +9,10 @@ left	\{
 right	\}
 %%
 {sos}		{
-				// do nothing
+				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
 				ECHO;
-				for (int i = 0; i < indent_count; i++) TAB;
 			}
 {char}		{
 				ECHO;
