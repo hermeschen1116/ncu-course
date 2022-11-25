@@ -2,17 +2,13 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-heading_tab		^\t+
-sos				^
+heading_tab		^\t*
 char			[^\t\{\}]
 l_bracket		\{
 r_bracket		\}
 %%
 {heading_tab}	{
 					// do nothing
-					fprintf(yyout, "%d", indent_count);
-				}
-{sos}			{
 					fprintf(yyout, "%d", indent_count);
 				}
 {char}			{
