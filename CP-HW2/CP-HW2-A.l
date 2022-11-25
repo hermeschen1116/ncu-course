@@ -10,7 +10,6 @@ right_s		^\t+\}
 eos			\n$
 %%
 {char}  	{
-				fprintf(yyout, "char");
 				ECHO;
 			}
 {left} 		{
