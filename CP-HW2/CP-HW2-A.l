@@ -7,7 +7,7 @@ char			[^\t\{\}]
 l_bracket		\{
 r_bracket		\}
 %%
-{heading_tabe}	{
+{heading_tab}	{
 					// do nothing
 					fprintf(yyout, "%d", indent_count);
 				}
