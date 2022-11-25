@@ -2,11 +2,11 @@
 	#define TAB fprintf(yyout, "\t");
 	unsigned int indent_count = 0;
 %}
-sos 		^\t*
 char 		[^\n\{\}]
 left 		\{
 right_e 	\}
 right_s		^\t+\}
+sos 		^\t*
 eos			\n$
 %%
 {char}  	{
