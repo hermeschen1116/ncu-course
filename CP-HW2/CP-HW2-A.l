@@ -9,7 +9,7 @@ r_bracket	\}
 char		[^\t\n\{\}]
 %%
 {sos}		{
-				for (int i = 0; i < indent_count; i++) TAB;
+				// for (int i = 0; i < indent_count; i++) TAB;
 			}
 {eos}		{
 				ECHO;
