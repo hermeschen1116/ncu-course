@@ -10,7 +10,7 @@ right_end		[^\t\n\}]*\}
 eos				\n
 %%
 {sos}			{
-					// do nothing
+					for (int i = 0; i < indent_count; i++) TAB;
 				}
 {left_start}	{
                 	++indent_count;
@@ -30,7 +30,6 @@ eos				\n
                 }
 {eos}			{
                 	ECHO;
-                	for (int i = 0; i < indent_count; i++) TAB;
                 }
 %%
 int main(int argc, char *argv[]) {
