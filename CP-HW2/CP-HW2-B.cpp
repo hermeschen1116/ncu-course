@@ -13,13 +13,13 @@ string string_union(const string &str_1, const string &str_2);
 
 string char_to_string(char c);
 
-string rule(const string& rule, map<char, string> first_set, map<char, vector<string> > grammars);
+string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars);
 
-string first(const vector<string>& rules, const map<char, string>& first_set, const map<char, vector<string> >& grammars);
+string first(const vector<string> &rules, const map<char, string> &first_set, const map<char, vector<string> > &grammars);
 
-map<char, string> first_set(const map<char, vector<string> >& grammars);
+map<char, string> first_set(const map<char, vector<string> > &grammars);
 
-void show_first_set(const map<char, string>& first_set);
+void show_first_set(const map<char, string> &first_set);
 
 int main() {
     string input;
@@ -61,7 +61,7 @@ string char_to_string(char c) {
     return string_buffer + c;
 }
 
-string rule(const string& rule, map<char, string> first_set, map<char, vector<string> > grammars) {
+string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars) {
     string first_buffer;
 
     for (char c: rule) {
@@ -94,33 +94,32 @@ string rule(const string& rule, map<char, string> first_set, map<char, vector<st
     return first_buffer;
 }
 
-string first(const vector<string>& rules, const map<char, string>& first_set, const map<char, vector<string> >& grammars) {
+string first(const vector<string> &rules, const map<char, string> &first_set, const map<char, vector<string> > &grammars) {
     string first_buffer;
 
-    for (const string& r: rules) {
+    for (const string &r: rules) {
         first_buffer = string_union(first_buffer, rule(r, first_set, grammars));
     }
 
     if ((int) first_buffer.find('$') != -1) {
-        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'),
-                           first_buffer.end());
+        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
     }
 
     return first_buffer;
 }
 
-map<char, string> first_set(const map<char, vector<string> >& grammars) {
+map<char, string> first_set(const map<char, vector<string> > &grammars) {
     map<char, string> first_set;
 
-    for (const auto& grammar: grammars) {
+    for (const auto &grammar: grammars) {
         first_set[grammar.first] = first(grammar.second, first_set, grammars);
     }
 
     return first_set;
 }
 
-void show_first_set(const map<char, string>& first_set) {
-    for (const auto& item: first_set) {
+void show_first_set(const map<char, string> &first_set) {
+    for (const auto &item: first_set) {
         cout << item.first << ' ' << item.second << endl;
     }
     cout << "END_OF_FIRST" << endl;
