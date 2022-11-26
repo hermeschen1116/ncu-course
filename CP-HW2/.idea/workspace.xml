@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B_btest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B_btest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B_btest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CP-HW2-B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CP-HW2-B.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,10 +70,10 @@
       <recent name="$PROJECT_DIR$/CP-HW-B" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.CP-HW2-B">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake Application.CP-HW2-B-btest">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -94,7 +92,8 @@
       <workItem from="1669295761879" duration="601000" />
       <workItem from="1669296388455" duration="29579000" />
       <workItem from="1669399796115" duration="8219000" />
-      <workItem from="1669408619814" duration="25822000" />
+      <workItem from="1669408619814" duration="25916000" />
+      <workItem from="1669478138616" duration="3906000" />
     </task>
     <servers />
   </component>

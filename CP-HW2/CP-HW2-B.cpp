@@ -15,7 +15,7 @@ string char_to_string(char c);
 
 string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars);
 
-string first(const vector<string> &rules, const map<char, string> &first_set, const map<char, vector<string> > &grammars);
+string first(const vector<string> &rules, map<char, string> &first_set, const map<char, vector<string> > &grammars);
 
 map<char, string> first_set(const map<char, vector<string> > &grammars);
 
@@ -64,41 +64,47 @@ string char_to_string(char c) {
 string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars) {
     string first_buffer;
 
-    for (char c: rule) {
-        switch (c) {
+    if (rule == ";" || rule == "$" || (rule.length() == 1 && islower(rule[0]))) return rule;
+    for (char r: rule) {
+//        cout << first_buffer << endl;
+        switch (r) {
             case ';':
+                first_buffer = string_union(first_buffer, char_to_string(r));
+                return first_buffer;
             case '$':
-                first_buffer = string_union(first_buffer, char_to_string(c));
-                break;
+                first_buffer = string_union(first_buffer, char_to_string(r));
+                first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
+                return first_buffer;
             default:
-                if (c >= 'a' && c <= 'z') {
-                    first_buffer = string_union(first_buffer, char_to_string(c));
+                if (r >= 'a' && r <= 'z') {
+                    first_buffer = string_union(first_buffer, char_to_string(r));
                     first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
-                    break;
+                    return first_buffer;
                 }
-                if (c >= 'A' && c <= 'Z') {
-                    if (first_set.find(c) != first_set.end()) {
-                        first_buffer = string_union(first_buffer, first_set[c]);
+                if (r >= 'A' && r <= 'Z') {
+                    if (first_set.find(r) == first_set.end()) {
+//                        cout << "current key: " << r << endl;
+                        first_set[r] = first(grammars[r], first_set, grammars);
+                    }
+                    if (first_set[r] == ";") {
+                        first_buffer = string_union(first_buffer, "");
                     } else {
-                        first_set[c] = first(grammars[c], first_set, grammars);
-                        first_buffer = string_union(first_buffer, first_set[c]);
+                        first_buffer = string_union(first_buffer, first_set[r]);
                     }
                 }
         }
     }
 
-    if ((int) first_buffer.find('$') != -1) {
-        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
-    }
-
     return first_buffer;
 }
 
-string first(const vector<string> &rules, const map<char, string> &first_set, const map<char, vector<string> > &grammars) {
+string first(const vector<string> &rules, map<char, string> &first_set, const map<char, vector<string> > &grammars) {
     string first_buffer;
 
     for (const string &r: rules) {
+//        cout << "current process: " << r << endl;
         first_buffer = string_union(first_buffer, rule(r, first_set, grammars));
+//        cout << first_buffer << endl;
     }
 
     if ((int) first_buffer.find('$') != -1) {
@@ -112,8 +118,13 @@ map<char, string> first_set(const map<char, vector<string> > &grammars) {
     map<char, string> first_set;
 
     for (const auto &grammar: grammars) {
-        first_set[grammar.first] = first(grammar.second, first_set, grammars);
+        if (first_set.find(grammar.first) == first_set.end()) {
+//            cout << "current key: " << grammar.first << endl;
+            first_set[grammar.first] = first(grammar.second, first_set, grammars);
+        }
     }
+
+//    cout << "===============================" << endl;
 
     return first_set;
 }
