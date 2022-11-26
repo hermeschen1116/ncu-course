@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <set>
 #include <map>
 #include <algorithm>
 
@@ -10,33 +11,23 @@ vector<string> string_split(const string &str, const char &sep);
 
 string string_union(const string &str_1, const string &str_2);
 
-string rule_extract(const string &str);
+string char_to_string(char c);
 
-string rule_group(const string &str);
+string rule(const string& rule, map<char, string> first_set, map<char, vector<string> > grammars);
 
-pair<char, string> grammar_extract(const string &str);
+string first(const vector<string>& rules, const map<char, string>& first_set, const map<char, vector<string> >& grammars);
 
-bool is_parsed(const string &rule);
+map<char, string> first_set(const map<char, vector<string> >& grammars);
 
-string non_terminal_extract(const char &non_terminal, map<char, string> &grammars);
-
-vector<char> get_map_key(map<char, string> &src_map);
-
-void non_terminal_replace(map<char, string> &grammars);
-
-map<char, string> first_set(const vector<string> &grammars);
-
-void show_grammar(const pair<char, string> &grammar);
-
-void show_first_set(const map<char, string> &first_set);
+void show_first_set(const map<char, string>& first_set);
 
 int main() {
-    string grammar;
-    vector<string> grammars;
+    string input;
+    map<char, vector<string> > grammars;
 
-    while (getline(cin, grammar)) {
-        if (grammar == "END_OF_GRAMMAR") break;
-        grammars.push_back(grammar);
+    while (getline(cin, input)) {
+        if (input == "END_OF_GRAMMAR") break;
+        grammars[input[0]] = string_split(input.substr(2), '|');
     }
 
     show_first_set(first_set(grammars));
@@ -55,150 +46,82 @@ vector<string> string_split(const string &str, const char &sep) {
 }
 
 string string_union(const string &str_1, const string &str_2) {
-    string union_string = str_1;
+    set<char> buffer_1(str_1.begin(), str_1.end());
+    set<char> buffer_2(str_2.begin(), str_2.end());
+    string union_string;
 
-    for (int i = 0; i < (int) str_2.size(); i++) {
-        if ((int) union_string.find(str_2[i]) == -1) union_string += str_2[i];
-    }
-
-    sort(union_string.begin(), union_string.end(), less<char>());
+    set_union(buffer_1.begin(), buffer_1.end(), buffer_2.begin(), buffer_2.end(), inserter(union_string, union_string.begin()));
 
     return union_string;
 }
 
-string rule_extract(const string &str) {
-    string rule;
+string char_to_string(char c) {
+    string string_buffer;
 
-    for (int i = 0; i < (int) str.size(); i++) {
-        rule += str[i];
-        if (islower(str[i])) break;
-    }
-
-    return rule;
+    return string_buffer + c;
 }
 
-string rule_group(const string &str) {
-    vector<string> rules = string_split(str, '|');
-    string group_rule;
+string rule(const string& rule, map<char, string> first_set, map<char, vector<string> > grammars) {
+    string first_buffer;
 
-    for (int i = 0; i < (int) rules.size(); i++) {
-        if (i == 0) group_rule = rule_extract(rules[i]);
-        else group_rule = string_union(group_rule, rule_extract(rules[i]));
-    }
-    sort(group_rule.begin(), group_rule.end(), less<char>());
-
-    return group_rule;
-}
-
-pair<char, string> grammar_extract(const string &str) {
-    vector<string> buffer = string_split(str, ' ');
-    pair<char, string> grammar;
-
-    grammar.first = buffer[0][0];
-    grammar.second = rule_group(buffer[1]);
-
-    return grammar;
-}
-
-bool is_parsed(const string &rule) {
-    for (int i = 0; i < (int) rule.size(); i++) {
-        if (isupper(rule[i])) return false;
-    }
-    return true;
-}
-
-string non_terminal_extract(const char &non_terminal, map<char, string> &grammars) {
-    if (grammars[non_terminal] == ";") return "";
-    return grammars[non_terminal];
-}
-
-vector<char> get_map_key(map<char, string> &src_map) {
-    vector<char> key;
-
-    for (map<char, string>::iterator it = src_map.begin(); it != src_map.end(); it++) {
-        key.push_back(it->first);
-    }
-
-    return key;
-}
-
-void non_terminal_replace(map<char, string> &grammars) {
-    vector<char> grammar_keys = get_map_key(grammars);
-    vector<char> parsed, unparsed;
-    string grammar_buffer, non_terminal_buffer, parse_buffer;
-
-    for (int i = 0; i < (int) grammar_keys.size(); i++) {
-        if (!is_parsed(grammars[grammar_keys[i]])) unparsed.push_back(grammar_keys[i]);
-        else parsed.push_back(grammar_keys[i]);
-    }
-
-    while (true) {
-        if (unparsed.empty()) break;
-//        cout << "parsed: ";
-//        for (int i = 0; i < (int) parsed.size(); i++) cout << parsed[i] << ' ';
-//        cout << endl;
-//        cout << "unparsed: ";
-//        for (int i = 0; i < (int) unparsed.size(); i++) cout << unparsed[i] << ' ';
-//        cout << endl;
-        for (int i = 0; i < (int) unparsed.size(); i++) {
-            parse_buffer = "";
-            for (int j = (int) grammars[unparsed[i]].size() - 1; j >= 0; j--) {
-                if (isupper(grammars[unparsed[i]][j])) {
-                    if (find(parsed.begin(), parsed.end(), grammars[unparsed[i]][j]) != parsed.end()) {
-                        non_terminal_buffer = non_terminal_extract(grammars[unparsed[i]][j], grammars);
-//                        cout << unparsed[i] << ": " << parse_buffer << '+' << non_terminal_buffer << '=';
-                        parse_buffer = string_union(parse_buffer, non_terminal_buffer);
-//                        cout << parse_buffer << endl;
-                    }
-                } else {
-                    if ((int) parse_buffer.find(grammars[unparsed[i]][j]) == -1) parse_buffer += grammars[unparsed[i]][j];
+    for (char c: rule) {
+        switch (c) {
+            case ';':
+            case '$':
+                first_buffer = string_union(first_buffer, char_to_string(c));
+                break;
+            default:
+                if (c >= 'a' && c <= 'z') {
+                    first_buffer = string_union(first_buffer, char_to_string(c));
+                    first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
+                    break;
                 }
-            }
-            sort(parse_buffer.begin(), parse_buffer.end(), less<char>());
-            grammars[unparsed[i]] = parse_buffer;
-            if (is_parsed(parse_buffer)) {
-                parsed.push_back(unparsed[i]);
-                unparsed.erase(find(unparsed.begin(), unparsed.end(), unparsed[i]));
-            }
+                if (c >= 'A' && c <= 'Z') {
+                    if (first_set.find(c) != first_set.end()) {
+                        first_buffer = string_union(first_buffer, first_set[c]);
+                    } else {
+                        first_set[c] = first(grammars[c], first_set, grammars);
+                        first_buffer = string_union(first_buffer, first_set[c]);
+                    }
+                }
         }
     }
+
+    if ((int) first_buffer.find('$') != -1) {
+        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
+    }
+
+    return first_buffer;
 }
 
-map<char, string> first_set(const vector<string> &grammars) {
-    pair<char, string> grammar_buffer, main_grammar;
+string first(const vector<string>& rules, const map<char, string>& first_set, const map<char, vector<string> >& grammars) {
+    string first_buffer;
+
+    for (const string& r: rules) {
+        first_buffer = string_union(first_buffer, rule(r, first_set, grammars));
+    }
+
+    if ((int) first_buffer.find('$') != -1) {
+        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'),
+                           first_buffer.end());
+    }
+
+    return first_buffer;
+}
+
+map<char, string> first_set(const map<char, vector<string> >& grammars) {
     map<char, string> first_set;
 
-    for (int i = 0; i < (int) grammars.size(); i++) {
-        grammar_buffer = grammar_extract(grammars[i]);
-        first_set[grammar_buffer.first] = grammar_buffer.second;
+    for (const auto& grammar: grammars) {
+        first_set[grammar.first] = first(grammar.second, first_set, grammars);
     }
-    main_grammar.first = 'S';
-    main_grammar.second = first_set['S'];
-    first_set.erase('S');
-
-//    show_first_set(first_set);
-
-    non_terminal_replace(first_set);
-
-//    cout << "=======================================" << endl;
-
-    first_set['S'] = main_grammar.second;
-
-    non_terminal_replace(first_set);
-
-    if ((int) first_set['S'].find('$') != -1) {
-        first_set['S'].erase(remove(first_set['S'].begin(), first_set['S'].end(), ';'), first_set['S'].end());
-    }
-
 
     return first_set;
 }
 
-void show_grammar(const pair<char, string> &grammar) {
-    cout << grammar.first << ' ' << grammar.second << endl;
-}
-
-void show_first_set(const map<char, string> &first_set) {
-    for_each(first_set.begin(), first_set.end(), show_grammar);
+void show_first_set(const map<char, string>& first_set) {
+    for (const auto& item: first_set) {
+        cout << item.first << ' ' << item.second << endl;
+    }
     cout << "END_OF_FIRST" << endl;
 }

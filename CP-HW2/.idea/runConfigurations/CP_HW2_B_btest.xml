@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CP-HW2-B-btest" type="CMakeRunConfiguration" factoryName="Application" singleton="false" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/CP-HW2-B/CP-HW2-B-1.in" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_HW2" TARGET_NAME="CP-HW2-B-btest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_HW2" RUN_TARGET_NAME="CP-HW2-B-btest">
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>
