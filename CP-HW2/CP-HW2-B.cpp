@@ -13,11 +13,9 @@ string string_union(const string &str_1, const string &str_2);
 
 void string_remove_all(string &str, const char &target);
 
-string char_to_string(const char &c);
+bool vector_contain(const string &str, const vector<string> &source);
 
-bool is_nullable(const char &c);
-
-string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars);
+string rule(const string &rule, map<char, string> &first_set, map<char, vector<string> > grammars);
 
 string first(const vector<string> &rules, map<char, string> &first_set, const map<char, vector<string> > &grammars);
 
@@ -46,6 +44,8 @@ vector<string> string_split(const string &str, const char &sep) {
 
     while (getline(spliter, buffer, sep)) split_string.push_back(buffer);
 
+    sort(split_string.begin(), split_string.end());
+
     return split_string;
 }
 
@@ -63,43 +63,35 @@ void string_remove_all(string &str, const char &target) {
     str.erase(remove(str.begin(), str.end(), target), str.end());
 }
 
-string char_to_string(const char &c) {
-    string string_buffer;
-
-    return string_buffer + c;
+bool vector_contain(const string &str, const vector<string> &source) {
+    return find(source.begin(), source.end(), str) != source.end();
 }
 
-bool is_nullable(const char &c) {
-    return c != ';' && c != '$' && isupper(c);
-}
-
-string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars) {
-    string first_buffer;
+string rule(const string &rule, map<char, string> &first_set, map<char, vector<string> > grammars) {
+    string rule_buffer, first_buffer;
 
     if (rule == ";" || rule == "$" || (rule.length() == 1 && islower(rule[0]))) return rule;
-    for (char r: rule) {
-        if (is_nullable(r)) {
-            if (first_set.find(r) == first_set.end()) {
-                first_set[r] = first(grammars[r], first_set, grammars);
+    for (char symbol: rule) {
+        if (isupper(symbol)) {
+            // non-terminal
+            // if first set of this symbol not exists, build one
+            if (first_set.find(symbol) == first_set.end()) {
+                first_set[symbol] = first(grammars[symbol], first_set, grammars);
             }
-            if (first_set[r] == ";") {
-                first_buffer = string_union(first_buffer, "");
-            } else {
-                first_buffer = string_union(first_buffer, first_set[r]);
+            // if return first set is null, append empty string
+            if (first_set[symbol] == ";" || first_set[symbol] == "$") rule_buffer = "";
+            else rule_buffer = first_set[symbol];
+            first_buffer = string_union(first_buffer, rule_buffer);
+            // if non-terminal not nullable, remove all EOS then return
+            if (first_set[symbol].find(';') || vector_contain("$", grammars[symbol])) {
+                string_remove_all(first_buffer, ';');
+                return first_buffer;
             }
         } else {
-            switch (r) {
-                case ';':
-                    first_buffer = string_union(first_buffer, char_to_string(r));
-                    break;
-                case '$':
-                    first_buffer = string_union(first_buffer, char_to_string(r));
-                    string_remove_all(first_buffer, ';');
-                    break;
-                default:
-                    first_buffer = string_union(first_buffer, char_to_string(r));
-                    string_remove_all(first_buffer, ';');
-            }
+            // terminal, EOS(;), and EOF($)
+            first_buffer = string_union(first_buffer, {symbol});
+            // when symbol is terminal or EOF, remove all EOS
+            if (symbol != ';') string_remove_all(first_buffer, ';');
             return first_buffer;
         }
     }
@@ -108,7 +100,7 @@ string rule(const string &rule, map<char, string> first_set, map<char, vector<st
 }
 
 string first(const vector<string> &rules, map<char, string> &first_set, const map<char, vector<string> > &grammars) {
-    string first_buffer;
+    string rule_buffer, first_buffer;
 
     for (const string &r: rules) {
         first_buffer = string_union(first_buffer, rule(r, first_set, grammars));
