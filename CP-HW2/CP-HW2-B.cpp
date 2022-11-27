@@ -1,9 +1,9 @@
 #include <iostream>
-#include <vector>
 #include <sstream>
+#include <algorithm>
+#include <vector>
 #include <set>
 #include <map>
-#include <algorithm>
 
 using namespace std;
 
@@ -11,7 +11,11 @@ vector<string> string_split(const string &str, const char &sep);
 
 string string_union(const string &str_1, const string &str_2);
 
-string char_to_string(char c);
+void string_remove_all(string &str, const char &target);
+
+string char_to_string(const char &c);
+
+bool is_nullable(const char &c);
 
 string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars);
 
@@ -55,10 +59,18 @@ string string_union(const string &str_1, const string &str_2) {
     return union_string;
 }
 
-string char_to_string(char c) {
+void string_remove_all(string &str, const char &target) {
+    str.erase(remove(str.begin(), str.end(), target), str.end());
+}
+
+string char_to_string(const char &c) {
     string string_buffer;
 
     return string_buffer + c;
+}
+
+bool is_nullable(const char &c) {
+    return c != ';' && c != '$' && isupper(c);
 }
 
 string rule(const string &rule, map<char, string> first_set, map<char, vector<string> > grammars) {
@@ -66,32 +78,29 @@ string rule(const string &rule, map<char, string> first_set, map<char, vector<st
 
     if (rule == ";" || rule == "$" || (rule.length() == 1 && islower(rule[0]))) return rule;
     for (char r: rule) {
-//        cout << first_buffer << endl;
-        switch (r) {
-            case ';':
-                first_buffer = string_union(first_buffer, char_to_string(r));
-                return first_buffer;
-            case '$':
-                first_buffer = string_union(first_buffer, char_to_string(r));
-                first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
-                return first_buffer;
-            default:
-                if (r >= 'a' && r <= 'z') {
+        if (is_nullable(r)) {
+            if (first_set.find(r) == first_set.end()) {
+                first_set[r] = first(grammars[r], first_set, grammars);
+            }
+            if (first_set[r] == ";") {
+                first_buffer = string_union(first_buffer, "");
+            } else {
+                first_buffer = string_union(first_buffer, first_set[r]);
+            }
+        } else {
+            switch (r) {
+                case ';':
                     first_buffer = string_union(first_buffer, char_to_string(r));
-                    first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
-                    return first_buffer;
-                }
-                if (r >= 'A' && r <= 'Z') {
-                    if (first_set.find(r) == first_set.end()) {
-//                        cout << "current key: " << r << endl;
-                        first_set[r] = first(grammars[r], first_set, grammars);
-                    }
-                    if (first_set[r] == ";") {
-                        first_buffer = string_union(first_buffer, "");
-                    } else {
-                        first_buffer = string_union(first_buffer, first_set[r]);
-                    }
-                }
+                    break;
+                case '$':
+                    first_buffer = string_union(first_buffer, char_to_string(r));
+                    string_remove_all(first_buffer, ';');
+                    break;
+                default:
+                    first_buffer = string_union(first_buffer, char_to_string(r));
+                    string_remove_all(first_buffer, ';');
+            }
+            return first_buffer;
         }
     }
 
@@ -102,14 +111,10 @@ string first(const vector<string> &rules, map<char, string> &first_set, const ma
     string first_buffer;
 
     for (const string &r: rules) {
-//        cout << "current process: " << r << endl;
         first_buffer = string_union(first_buffer, rule(r, first_set, grammars));
-//        cout << first_buffer << endl;
     }
 
-    if ((int) first_buffer.find('$') != -1) {
-        first_buffer.erase(remove(first_buffer.begin(), first_buffer.end(), ';'), first_buffer.end());
-    }
+    if ((int) first_buffer.find('$') != -1) string_remove_all(first_buffer, ';');
 
     return first_buffer;
 }
@@ -119,12 +124,9 @@ map<char, string> first_set(const map<char, vector<string> > &grammars) {
 
     for (const auto &grammar: grammars) {
         if (first_set.find(grammar.first) == first_set.end()) {
-//            cout << "current key: " << grammar.first << endl;
             first_set[grammar.first] = first(grammar.second, first_set, grammars);
         }
     }
-
-//    cout << "===============================" << endl;
 
     return first_set;
 }
