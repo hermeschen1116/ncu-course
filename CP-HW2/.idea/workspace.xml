@@ -22,12 +22,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B_test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/CP_HW2_B_btest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CP-HW2-B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sample.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,8 +107,16 @@
       <workItem from="1669296388455" duration="29579000" />
       <workItem from="1669399796115" duration="8219000" />
       <workItem from="1669408619814" duration="25916000" />
-      <workItem from="1669478138616" duration="8166000" />
+      <workItem from="1669478138616" duration="8485000" />
     </task>
+    <task id="LOCAL-00001" summary="making logic more clear">
+      <created>1669536191682</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669536191682</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,7 +124,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="making logic more clear" />
+    <option name="LAST_COMMIT_MESSAGE" value="making logic more clear" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
