@@ -21,11 +21,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="add ignore file">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CP-HW2-B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CP-HW2-B.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="add ignore file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,6 +119,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
