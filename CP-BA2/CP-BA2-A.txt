@@ -9,3 +9,104 @@ if(true) {
       */
 }
 cout << "Oh yeah~~Oh yeah~~" << endl;
+// ###  ###       ##  ##           ###  #  ##             ##     ##    #
+//  #    #         #   #            #  ##  #               #      #    #
+//  #    #         #   #            #  ##  #               #      #    #
+//  ######   ###   #   #   ####      # ##  #   ####  ####  #   ####    #
+//  #    #  #   #  #   #  ##  ##     ### ##   ##  ##  # #  #  #   #    #
+//  #    #  #####  #   #  #    #     ##  ##   #    #  #    #  #   #    #
+//  #    #  #      #   #  ##  ##     ##  ##   ##  ##  #    #  #   #
+// ###  ###  #### ### ###  ####       #  #     ####  ###  ###  #####   #
+//
+
+/*
+Lex is a computer program that generates lexical analyzers ("scanners" or "lexers").
+
+Lex is commonly used with the yacc parser generator. Lex,
+originally written by Mike Lesk and Eric Schmidt and described in 1975,
+ is the standard lexical analyzer generator on many Unix systems,
+ and an equivalent tool is specified as part of the POSIX standard.
+
+Lex reads an input stream specifying the lexical analyzer and
+writes source code which implements the lexical analyzer in the C programming language.
+
+In addition to C, some old versions of Lex could generate a lexer in Ratfor.
+*/
+// Crafting a Compiler (IE-Paperback)
+cout << 9780138017859 << endl;
+cout << "Chapter 1 Introduction" << endl;
+cout << "Chapter 2 A Simple Compiler" << endl;
+cout << "Chapter 3 Scanning—Theory and Practice" << endl;
+cout << "Chapter 4 Grammars and Parsing" << endl;
+cout << "Chapter 5 Top-Down Parsing" << endl;
+cout << "Chapter 6 Bottom-Up Parsing" << endl;
+cout << "Chapter 7 Syntax-Directed Translation" << endl;
+cout << "Chapter 8 Symbol Tables and Declaration Processing" << endl;
+cout << "Chapter 9 Semantic Analysis" << endl;
+cout << "Chapter 10 Intermediate Representations" << endl;
+cout << "Chapter 11 Code Generation for a Virtual Machine" << endl;
+cout << "Chapter 12 Runtime Support" << endl;
+cout << "Chapter 13 Target Code Generation" << endl;
+cout << "Chapter 14 Program Optimization" << endl;
+if(false) {
+	// 111
+	cout << "11111" << endl;
+	/*
+	cout << " -----" << endl;
+	*/
+}
+/*
+if(false) {
+	cout << "12345" << endl;
+}
+*/
+// cout << "12345" << endl;
+if(true) {
+	if(true) {
+		cout << "hehe" << endl;
+	}
+}
+/*
+12321
+654654
+42365
+534
+*/
+
+// 123456
+
+cout << "c++" << endl;
+if(true) {
+	cout << "++c" << endl;
+	if(true) {
+		cout << "++c" << endl;
+	}
+}
+
+/*
+3213524165
+65465
+685
+*/
+if(true) {
+	// ~~ Fighting ~~
+	if(false) {
+		cout << "Game Over" << endl;
+		if(true) {
+			cout << 66666 << endl;
+		}
+	}
+	/*
+	╭━━━╮╱╱╱╭╮╱╭╮
+	┃╭━━╯╱╱╱┃┃╭╯╰╮
+	┃╰━━┳┳━━┫╰┻╮╭╯
+	┃╭━━╋┫╭╮┃╭╮┃┃
+	┃┃╱╱┃┃╰╯┃┃┃┃╰╮
+	╰╯╱╱╰┻━╮┣╯╰┻━╯
+	╱╱╱╱╱╭━╯┃
+	╱╱╱╱╱╰━━╯
+	*/
+}
+/*
+cout << "WIN" << endl;
+*/
