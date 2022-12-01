@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CP-BA2-B" type="CMakeRunConfiguration" factoryName="Application" singleton="false" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/CP-BA2-B.in" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_BA2" TARGET_NAME="CP-BA2-B" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_BA2" RUN_TARGET_NAME="CP-BA2-B">
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>
