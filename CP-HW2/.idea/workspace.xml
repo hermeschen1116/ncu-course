@@ -22,6 +22,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab267e7b-02c0-48b6-bf56-c74458f1912c" name="Changes" comment="add ignore file">
+      <change beforePath="$PROJECT_DIR$/../CP-BA2/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../CP-BA2/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ML-final_project" beforeDir="false" afterPath="$PROJECT_DIR$/../ML-final_project" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,9 +90,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Shell Script.CP-HW2-B-test">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -112,7 +114,8 @@
       <workItem from="1669408619814" duration="25916000" />
       <workItem from="1669478138616" duration="8485000" />
       <workItem from="1669634562230" duration="46000" />
-      <workItem from="1669864170519" duration="1000" />
+      <workItem from="1669864170519" duration="83000" />
+      <workItem from="1669870843193" duration="164000" />
     </task>
     <task id="LOCAL-00001" summary="making logic more clear">
       <created>1669536191682</created>
