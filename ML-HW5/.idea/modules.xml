@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ML-HW5.iml" filepath="$PROJECT_DIR$/ML-HW5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Lab-DNN-Titanic.iml" filepath="$PROJECT_DIR$/.idea/Lab-DNN-Titanic.iml" />
     </modules>
   </component>
 </project>
