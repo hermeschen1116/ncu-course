@@ -3,8 +3,7 @@
 	#include "CP-HW3-A.tab.h"
 %}
 %%
-\n                  {}
-[ \t]+	            {}
+\n|[ \t]+	        {}
 "add"               { return ADD; }
 "sub"               { return SUB; }
 "mul"               { return MUL; }
