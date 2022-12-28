@@ -1,52 +1,42 @@
 %{
 	#include <stdio.h>
 	#include <string.h>
-	void yyerror(const char *message);
+	#include <math.h>
 
-	int stack[1024] = {0};
-	int pointer = 0;
+	int yylex();
+	void yyerror(const char *message);
 %}
 %union {
 	int int_val;
-	char operand[4];
 }
-%token<int_val> INTEGER
-%token<operand> OPERAND
+%token ADD
+%token SUB
+%token MUL
+%token MOD
+%token LOAD
+%token INC
+%token DEC
+%token END_OF_FILE;
+%token<int_val> INUMBER
+%type<int_val> expr
 %%
-call :  INTEGER     {
-						if (pointer < 1024) stack[pointer++] = $1;
-					}
-		| OPERAND   {
-						if (pointer >= 2) {
-							if (!strcmp($1, "add")) {
-								stack[pointer-2] = stack[pointer-1] + stack[pointer-2];
-								pointer -= 2;
-							} else if (!strcmp($1, "sub")) {
-								stack[pointer-2] = stack[pointer-1] - stack[pointer-2];
-                                pointer -= 2;
-                            } else if (!strcmp($1, "mul")) {
-                                stack[pointer-2] = stack[pointer-1] * stack[pointer-2];
-                                pointer -= 2;
-                            } else if (!strcmp($1, "mod")) {
-                                stack[pointer-2] = stack[pointer-1] % stack[pointer-2];
-                                pointer -= 2;
-                            } else if (!strcmp($1, "inc")) {
-                                stack[pointer-1] += 1;
-                            } else if (!strcmp($1, "dec")) {
-                                stack[pointer-1] -= 1;
-                            } else printf("Invalid format\n");
-						}
-						else printf("Invalid format\n");
-				    }
-		;
+stmts   : call { return 0; }
+        ;
+call    : expr { printf("%d\n", $1); }
+        ;
+expr    : LOAD INUMBER      { $$ = $2; }
+        | expr expr ADD     { $$ = $2 + $1; }
+        | expr expr SUB     { $$ = $2 - $1; }
+        | expr expr MUL     { $$ = $2 * $1; }
+        | expr expr MOD     { $$ = $2 % $1; }
+        | expr INC          { $$ = $1 + 1; }
+        | expr DEC          { $$ = $1 - 1; }
+        ;
 %%
-void yyerror (const char *message) {
-	fprintf (stderr, "%s\n",message);
+void yyerror(const char *message) {
+	printf("Invalid format\n");
 }
 int main(int argc, char *argv[]) {
 	yyparse();
-	if (pointer > 1) printf("Invalid format\n");
-	else printf("%d\n", stack[0]);
-
 	return 0;
 }

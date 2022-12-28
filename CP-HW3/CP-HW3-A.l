@@ -1,18 +1,21 @@
+%option noyywrap
 %{
-	#include <string.h>
 	#include "CP-HW3-A.tab.h"
 %}
-load        0|([1-9][0-9]*)
-operator    add|sub|mul|mod|inc|dec
 %%
-{load}      {
-				ECHO;
-				yylval.int_val = atoi(yytext);
-				return (INTEGER);
-			}
-{operator}  {
-				ECHO;
-				strcpy(yylval.operand, yytext);
-				return (OPERAND);
-			}
+\n                  {}
+[ \t]+	            {}
+"add"               { return ADD; }
+"sub"               { return SUB; }
+"mul"               { return MUL; }
+"mod"               { return MOD; }
+"inc"               { return INC; }
+"dec"               { return DEC; }
+"load"              { return LOAD; }
+0|([1-9][0-9]*)     {
+						yylval.int_val = atoi(yytext);
+						return(INUMBER);
+					}
+.	                { return(yytext[0]); }
+<<EOF>>             { return END_OF_FILE; }
 %%
