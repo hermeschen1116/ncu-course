@@ -1,6 +1,6 @@
 %option noyywrap
 %{
-	#include "CP-HW3-A.tab.h"
+	#include "CP-HW3-B.tab.h"
 %}
 %%
 \n                  {}
@@ -14,8 +14,8 @@
 "load"              { return LOAD; }
 0|([1-9][0-9]*)     {
 						yylval.int_val = atoi(yytext);
-						return INTEGER;
+						return(INUMBER);
 					}
-.	                { return yytext[0]; }
+.	                { return(yytext[0]); }
 <<EOF>>             { return END_OF_FILE; }
 %%

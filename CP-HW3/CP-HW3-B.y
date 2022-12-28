@@ -1,5 +1,7 @@
 %{
 	#include <stdio.h>
+	#include <string.h>
+	#include <math.h>
 
 	int yylex();
 	void yyerror(const char *message);
@@ -14,15 +16,15 @@
 %token LOAD
 %token INC
 %token DEC
-%token END_OF_FILE
-%token<int_val> INTEGER
+%token END_OF_FILE;
+%token<int_val> INUMBER
 %type<int_val> expr
 %%
 stmts   : call { return 0; }
         ;
 call    : expr { printf("%d\n", $1); }
         ;
-expr    : LOAD INTEGER      { $$ = $2; }
+expr    : LOAD INUMBER      { $$ = $2; }
         | expr expr ADD     { $$ = $2 + $1; }
         | expr expr SUB     { $$ = $2 - $1; }
         | expr expr MUL     { $$ = $2 * $1; }
