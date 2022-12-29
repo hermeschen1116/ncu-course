@@ -30,10 +30,22 @@ expr    : LOAD NUMBER       { $$ = $2; /*printf("LOAD => %d\n", $2);*/ }
         | expr expr MOD     { $$ = $2 % $1; }
         | expr INC          { $$ = $1 + 1; }
         | expr DEC          { $$ = $1 - 1; }
-        | expr ADD          { printf("Invalid format\n"); return 0; }
-        | expr SUB          { printf("Invalid format\n"); return 0; }
-        | expr MUL          { printf("Invalid format\n"); return 0; }
-        | expr MOD          { printf("Invalid format\n"); return 0; }
+        | expr ADD          {
+                                printf("Invalid format\n");
+                                return 0;
+                            }
+        | expr SUB          {
+                                printf("Invalid format\n");
+                                return 0;
+                            }
+        | expr MUL          {
+                                printf("Invalid format\n");
+                                return 0;
+                            }
+        | expr MOD          {
+                                printf("Invalid format\n");
+                                return 0;
+                            }
         ;
 %%
 void yyerror(const char *message) {
