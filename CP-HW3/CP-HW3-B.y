@@ -25,10 +25,10 @@
 %left MUL
 %left ADD_SUB
 %%
-line    : matrix                    {
-										printf("Accepted\n");
-										return 0;
-									}
+line    : matrix    {
+						printf("Accepted\n");
+						return 0;
+					}
 		;
 matrix  : LSBR NUM ',' NUM RSBR     {
 										$$.row = $2,
@@ -66,7 +66,7 @@ void sematic_error(int num_column) {
     printf("Semantic error on col %d\n", num_column);
 }
 void yyerror(const char *message) {
-	fprintf(stderr, "%s\n", message);
+	printf("Syntax Error\n");
 }
 int main(int argc, char *argv[]) {
 	yyparse();
