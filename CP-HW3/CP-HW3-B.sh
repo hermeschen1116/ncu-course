@@ -1,3 +1,4 @@
+clear
 bison -d -o CP-HW3-B.tab.c CP-HW3-B.y
 gcc -c -g -I.. CP-HW3-B.tab.c --std=c90
 flex -o lex.yy.c CP-HW3-B.l
