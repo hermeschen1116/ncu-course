@@ -15,6 +15,4 @@
 						yylval.int_val = atoi(yytext);
 						return NUMBER;
 					}
-.	                { return yytext[0]; }
-<<EOF>>             { return END_OF_FILE; }
 %%

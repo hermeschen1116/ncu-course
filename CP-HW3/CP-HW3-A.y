@@ -14,7 +14,6 @@
 %token LOAD
 %token INC
 %token DEC
-%token END_OF_FILE
 %token<int_val> NUMBER
 %type<int_val> expr
 %%
