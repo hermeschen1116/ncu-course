@@ -1,68 +1,64 @@
 %{
 	#include <stdio.h>
+	#include <stdlib.h>
 
 	int yylex();
 	void yyerror(const char *message);
-	void sematic_error(int num_column);
+	void semantic_error(int num_column);
 %}
 %union {
-	int int_val;
-    int loc;
+	int int_val, loc;
     struct def {
         int row, column;
-    } mat;
+    } matrix;
 }
-%type<mat> matrix
-%token<int_val> NUM
+%type<matrix> expr
+%token<int_val> DIM
 %token<loc> ADD_SUB
 %token<loc> MUL
 %token<loc> TRS
-%token<loc> LRBR
-%token<loc> RRBR
-%token<loc> LSBR
-%token<loc> RSBR
-%left TRS
-%left MUL
 %left ADD_SUB
+%left MUL
+%left TRS
 %%
-line    : matrix    {
+stmt    : expr      {
 						printf("Accepted\n");
 						return 0;
 					}
 		;
-matrix  : LSBR NUM ',' NUM RSBR     {
-										$$.row = $2,
-										$$.column = $4;
+expr    : '[' DIM ',' DIM ']'       {
+										$$.row = $4;
+										$$.column = $2;
 									}
-		| matrix ADD_SUB matrix     {
+		| expr ADD_SUB expr         {
 	                                    if ($1.row == $3.row && $1.column == $3.column) {
 											$$.row = $1.row;
 											$$.column = $1.column;
 										} else {
-											sematic_error($2);
+											semantic_error($2);
 	                                        return 0;
 	                                    }
 	                                }
-		| matrix MUL matrix         {
-	                                    if ($1.column == $3.row) {
-	                                        $$.row = $1.row;
-	                                        $$.column = $3.column;
+		| expr MUL expr             {
+	                                    if ($1.row == $3.column) {
+	                                        $$.row = $3.row;
+	                                        $$.column = $1.column;
 	                                    } else {
-	                                        sematic_error($2);
+	                                        semantic_error($2);
 	                                        return 0;
 	                                    }
 	                                }
-		| matrix TRS                {
+		| expr TRS                  {
 	                                    $$.row = $1.column;
 	                                    $$.column = $1.row;
 	                                }
-		| LRBR matrix RRBR          {
+		| '(' expr ')'              {
 	                                    $$.row = $2.row;
 	                                    $$.column = $2.column;
 	                                }
 		;
 %%
-void sematic_error(int num_column) {
+void semantic_error(int num_column) {
     printf("Semantic error on col %d\n", num_column);
 }
 void yyerror(const char *message) {
