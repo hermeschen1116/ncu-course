@@ -1,21 +1,39 @@
 %option noyywrap
 %{
 	#include "CP-HW3-B.tab.h"
+	int num_column = 0;
 %}
 %%
 \n                  {}
-[ \t]+	            {}
-"add"               { return ADD; }
-"sub"               { return SUB; }
-"mul"               { return MUL; }
-"mod"               { return MOD; }
-"inc"               { return INC; }
-"dec"               { return DEC; }
-"load"              { return LOAD; }
-0|([1-9][0-9]*)     {
-						yylval.int_val = atoi(yytext);
-						return(INUMBER);
+[ \t]+	            { num_column += yyleng; }
+"+"|"-"             { return ADD_SUB; }
+"*"                 {
+						num_column += yyleng;
+						return MUL;
 					}
-.	                { return(yytext[0]); }
-<<EOF>>             { return END_OF_FILE; }
+"("                 {
+						num_column += yyleng;
+						return LRBR;
+					}
+")"	                {
+						num_column += yyleng;
+						return RRBR;
+					}
+"["                 {
+						num_column += yyleng;
+						return LSBR;
+					}
+"]"                 {
+						num_column += yyleng;
+						return RSBR;
+					}
+"^T"                {
+						num_column += yyleng;
+						return TRS;
+					}
+0|([1-9][0-9]*)	    {
+						yylval.int_val = atoi(yytext);
+						return NUM;
+					}
+.	                { return yytext[0]; }
 %%
