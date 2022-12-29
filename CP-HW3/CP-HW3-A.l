@@ -13,7 +13,7 @@
 "load"              { return LOAD; }
 0|([1-9][0-9]*)     {
 						yylval.int_val = atoi(yytext);
-						return INTEGER;
+						return NUMBER;
 					}
 .	                { return yytext[0]; }
 <<EOF>>             { return END_OF_FILE; }

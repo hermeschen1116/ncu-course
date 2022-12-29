@@ -15,14 +15,14 @@
 %token INC
 %token DEC
 %token END_OF_FILE
-%token<int_val> INTEGER
+%token<int_val> NUMBER
 %type<int_val> expr
 %%
 stmts   : call { return 0; }
         ;
 call    : expr { printf("%d\n", $1); }
         ;
-expr    : LOAD INTEGER      { $$ = $2; }
+expr    : LOAD NUMBER       { $$ = $2; }
         | expr expr ADD     { $$ = $2 + $1; }
         | expr expr SUB     { $$ = $2 - $1; }
         | expr expr MUL     { $$ = $2 * $1; }

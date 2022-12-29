@@ -1,8 +1,5 @@
 %{
 	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
-	#include <math.h>
 
 	int yylex();
 	void yyerror(const char *message);
@@ -46,7 +43,7 @@ matrix  : LSBR NUM ',' NUM RSBR     {
 	                                        return 0;
 	                                    }
 	                                }
-        | matrix MUL matrix         {
+		| matrix MUL matrix         {
 	                                    if ($1.column == $3.row) {
 	                                        $$.row = $1.row;
 	                                        $$.column = $3.column;
@@ -55,15 +52,15 @@ matrix  : LSBR NUM ',' NUM RSBR     {
 	                                        return 0;
 	                                    }
 	                                }
-        | matrix TRS                {
+		| matrix TRS                {
 	                                    $$.row = $1.column;
 	                                    $$.column = $1.row;
 	                                }
-        | LRBR matrix RRBR          {
+		| LRBR matrix RRBR          {
 	                                    $$.row = $2.row;
 	                                    $$.column = $2.column;
 	                                }
-        ;
+		;
 %%
 void sematic_error(int num_column) {
     printf("Semantic error on col %d\n", num_column);
