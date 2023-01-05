@@ -26,10 +26,11 @@ stmt        : formula   {
 							return 0;
 						}
 			;
-formula     : formula '+' formula   { $$ = $1 + $3; }
-			| formula '-' formula   { $$ = $1 - $3; }
+formula     : operation '+' formula   { $$ = $1 + $3; }
+			| operation '-' formula   { $$ = $1 - $3; }
 			| operation             { $$ = $1; }
-operation   : 'P' formula formula   {
+			;
+operation   : 'P' NUMBER NUMBER     {
 										int i = 1, sum_t = 1, sum_b = 1;
 										if ($2 == $3) $$ = 1;
 										else if ($2 > $3 && $2 <= 12 && $3 <=12) {
@@ -41,7 +42,7 @@ operation   : 'P' formula formula   {
 											return 0;
 										}
 									}
-			| 'C' formula formula   {
+			| 'C' NUMBER NUMBER     {
 										int i = 1, sum_t = 1, sum_b = 1;
 										if ($2 == $3) $$ = 1;
 	                                    else if ($2 > $3 && $2 <= 12 && $3 <=12) {
@@ -55,6 +56,7 @@ operation   : 'P' formula formula   {
 	                                    }
 									}
 			| NUMBER                { $$ = $1; }
+			;
 %%
 void yyerror(const char *message) {
 	printf("Wrong Formula\n");
