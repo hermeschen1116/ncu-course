@@ -1,3 +1,6 @@
 [submodule "ML-Final_Project"]
 	path = ML-Final_Project
 	url = git@Github_HermesChen:hermeschen1116/project-unicorn.git
+[submodule "CP-Final_Project"]
+	path = CP-Final_Project
+	url = git@github.com:hermeschen1116/mini-lisp-interpreter.git
