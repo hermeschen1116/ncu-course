@@ -5,5 +5,5 @@ pip-review==1.2.0
 pytorch-lightning==1.8.0.post1
 seqeval==1.2.2
 tensorboard==2.10.1
-torch==1.13.1
+torch==2.2.0
 torchmetrics==0.10.2
