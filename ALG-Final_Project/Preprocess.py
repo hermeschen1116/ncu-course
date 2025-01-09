@@ -13,14 +13,15 @@ class ImagePreprocessor:
         self.__color_mode = color_range  # how many color
 
     def get_label(self):  # get label
-        return int(self.__image_path[0].split('/')[-1])  # get label
+        return int(self.__image_path[0].split("/")[-1])  # get label
 
     def get_image_data(self):  # get processed image data
         full_path = os.path.join(self.__image_path[0], self.__image_path[1])  # get full path
         image_data = Image.open(full_path)  # open image
 
-        return (np.array(image_data) / self.__color_mode) \
-            .reshape(self.__data_dimensions[2], self.__data_dimensions[0], self.__data_dimensions[1])  # reshape
+        return (np.array(image_data) / self.__color_mode).reshape(
+            self.__data_dimensions[2], self.__data_dimensions[0], self.__data_dimensions[1]
+        )  # reshape
 
 
 class DataSet:
@@ -31,8 +32,9 @@ class DataSet:
         self.__data_category = data_category  # set the number of categories in the data set
         self.__file_path = []  # initialize the file path
         self.__label_set = []  # initialize the label list
-        self.__data_set = np.zeros((data_dimension[0], data_dimension[1])) \
-            .reshape(data_dimension[2], data_dimension[0], data_dimension[1])  # initialize the data list
+        self.__data_set = np.zeros((data_dimension[0], data_dimension[1])).reshape(
+            data_dimension[2], data_dimension[0], data_dimension[1]
+        )  # initialize the data list
 
     def set_source_path(self, source_path):  # set the data set source path
         self.__source_path = source_path
@@ -62,12 +64,12 @@ class DataSet:
         timer_start = time.process_time()  # start timer
         for root, dirs, files in os.walk(self.__source_path):  # walk through the data set
             for file in files:  # get the file path
-                if file == '.DS_Store' or file == 'desktop.ini':  # skip the .DS_Store and the desktop.ini file
+                if file == ".DS_Store" or file == "desktop.ini":  # skip the .DS_Store and the desktop.ini file
                     continue
                 self.__file_path.append([root, file])  # add the file path to the list
                 self.__source_size += 1  # increase the number of images
         timer_end = time.process_time()  # end timer
-        print('Data set loaded. Execution time: {:.2f} s'.format(timer_end - timer_start))  # print execution time
+        print("Data set loaded. Execution time: {:.2f} s".format(timer_end - timer_start))  # print execution time
 
     def preprocess(self):  # preprocess the data set
         timer_start = time.process_time()  # start timer
@@ -76,11 +78,12 @@ class DataSet:
             self.__label_set.append(processor.get_label())  # add the label to the list
             self.__data_set = np.vstack((self.__data_set, processor.get_image_data()))  # add the image data to the list
         self.__data_set = np.delete(self.__data_set, [0], 0)  # delete the first row
-        self.__data_set = self.__data_set.reshape(self.__source_size, self.__data_dimension[0],
-                                                  self.__data_dimension[1], self.__data_dimension[2])  # reshape
+        self.__data_set = self.__data_set.reshape(
+            self.__source_size, self.__data_dimension[0], self.__data_dimension[1], self.__data_dimension[2]
+        )  # reshape
         self.__label_set = np_utils.to_categorical(self.__label_set, self.__data_category)  # convert to categorical
         timer_end = time.process_time()  # end timer
-        print('Data set preprocessed. Execution time: {:.2f} s'.format(timer_end - timer_start))  # print execution time
+        print("Data set preprocessed. Execution time: {:.2f} s".format(timer_end - timer_start))  # print execution time
 
     def get_label_set(self):  # get the processed label set
         return self.__label_set

@@ -7,7 +7,7 @@ def max_cofactor(src_prams, test_prams):
 
 def count_coprime(src_prams):
     count = 0
-    for f in range(1, src_prams+1):
+    for f in range(1, src_prams + 1):
         if max_cofactor(src_prams, f) == 1:
             count += 1
     return count

@@ -3,5 +3,5 @@ class Solution:
     def runningSum(self, nums: list[int]) -> list[int]:
         result = nums
         for i in range(1, len(result)):
-            result[i] += result[i-1]
+            result[i] += result[i - 1]
         return result

@@ -5,5 +5,5 @@ def get_least_move(bricks_list):
 
 for i in range(int(input())):
     nBricks = int(input())
-    bricks = list(map(int, input().split(' ')))
+    bricks = list(map(int, input().split(" ")))
     print(get_least_move(bricks))

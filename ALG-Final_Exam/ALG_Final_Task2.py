@@ -6,7 +6,7 @@ def initialize_path_map(size_prams):
             if n == j:
                 tmp.append(0)
             else:
-                tmp.append(float('inf'))
+                tmp.append(float("inf"))
         path_map_return.append(tmp)
 
     return path_map_return
@@ -28,15 +28,15 @@ def floyd_warshall(path_map_prams):
 def print_path_map(path_map_prams):
     map_size = len(path_map_prams)
     for n_0 in range(map_size):
-        for n_1 in range(map_size-1):
-            if path_map_prams[n_0][n_1] == float('inf'):
-                print('INF', end=' ')
+        for n_1 in range(map_size - 1):
+            if path_map_prams[n_0][n_1] == float("inf"):
+                print("INF", end=" ")
             else:
-                print(path_map_prams[n_0][n_1], end=' ')
-        if path_map_prams[n_0][map_size-1] == float('inf'):
-            print('INF')
+                print(path_map_prams[n_0][n_1], end=" ")
+        if path_map_prams[n_0][map_size - 1] == float("inf"):
+            print("INF")
         else:
-            print(path_map_prams[n_0][map_size-1])
+            print(path_map_prams[n_0][map_size - 1])
 
 
 num_node, num_edge = map(int, input().split())

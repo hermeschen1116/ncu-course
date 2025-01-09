@@ -7,7 +7,7 @@ def prim_span(edges_pram):
     path = []
     size = len(edges_pram)
 
-    min_edge = float('inf')
+    min_edge = float("inf")
     for e_1 in range(size):
         for e_2 in range(size):
             if get_weight(edges_pram[e_1], edges_pram[e_2]) < min_edge and edges_pram[e_1] != edges_pram[e_2]:
@@ -16,7 +16,7 @@ def prim_span(edges_pram):
     cost_return += min_edge
 
     while len(path) != len(edges_pram):
-        min_edge = float('inf')
+        min_edge = float("inf")
         min_index = 0
         if len(path) == 0:
             for e_1 in range(size):

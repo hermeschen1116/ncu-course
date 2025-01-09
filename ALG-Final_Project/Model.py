@@ -21,7 +21,8 @@ class CNN:
     def add_convolution_layer(self, filters, kernel_size, activation, input_shape):  # add convolution layer
         if self.__num_convolutions == 0:  # if first convolution layer
             self.__model.add(
-                Conv2D(filters, kernel_size, activation=activation, input_shape=input_shape))  # add convolution layer
+                Conv2D(filters, kernel_size, activation=activation, input_shape=input_shape)
+            )  # add convolution layer
         else:  # if not first convolution layer
             self.__model.add(Conv2D(filters, kernel_size, activation=activation))  # add convolution layer
         self.__num_convolutions += 1  # increment number of convolutions layers
@@ -47,26 +48,31 @@ class CNN:
 
     def train_model(self, batch_size, epochs, verbose, validation_split):  # train model
         timer_start = time.process_time()  # start timer
-        self.__train_logs = self.__model.fit(self.__data_set, self.__label_set,
-                                             epochs=epochs, batch_size=batch_size, verbose=verbose,
-                                             validation_split=validation_split)  # model training settings
+        self.__train_logs = self.__model.fit(
+            self.__data_set,
+            self.__label_set,
+            epochs=epochs,
+            batch_size=batch_size,
+            verbose=verbose,
+            validation_split=validation_split,
+        )  # model training settings
         timer_end = time.process_time()  # end timer
-        print('Training finished. Execution time: {:.2f} s'.format(timer_end - timer_start))  # print execution time
+        print("Training finished. Execution time: {:.2f} s".format(timer_end - timer_start))  # print execution time
 
     def show_train_logs(self):  # show train logs
-        plt.plot(self.__train_logs.history['loss'])  # plot loss
-        plt.plot(self.__train_logs.history['val_loss'])  # plot validation loss
-        plt.title('Training logs')  # plot title
-        plt.ylabel('Loss')  # plot y label
-        plt.xlabel('Epoch')  # plot x label
-        plt.legend(['loss', 'val_loss'], loc='upper left')  # plot legend
+        plt.plot(self.__train_logs.history["loss"])  # plot loss
+        plt.plot(self.__train_logs.history["val_loss"])  # plot validation loss
+        plt.title("Training logs")  # plot title
+        plt.ylabel("Loss")  # plot y label
+        plt.xlabel("Epoch")  # plot x label
+        plt.legend(["loss", "val_loss"], loc="upper left")  # plot legend
         plt.show()  # show plot
 
     def test_model(self, label_set, data_set, verbose):  # test model
         timer_start = time.process_time()  # start timer
         self.__test_logs = self.__model.evaluate(data_set, label_set, verbose=verbose)  # test model
         timer_end = time.process_time()  # end timer
-        print('Testing finished. Execution time: {:.2f} s'.format(timer_end - timer_start))  # print execution time
+        print("Testing finished. Execution time: {:.2f} s".format(timer_end - timer_start))  # print execution time
 
     def show_test_logs(self):
         print("Total loss: ", self.__test_logs[0])  # print total loss

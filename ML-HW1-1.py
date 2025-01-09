@@ -4,5 +4,5 @@ class Solution:
         num_list = len(nums)
         result = []
         for i in range(0, num_list, 2):
-            result.extend([nums[i + 1]]*nums[i])
+            result.extend([nums[i + 1]] * nums[i])
         return result
